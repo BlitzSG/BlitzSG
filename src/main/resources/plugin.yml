@@ -1,8 +1,7 @@
 name: BlitzSG
 version: 1.0
-main: me.hardstyles.blitz.BlitzSG
-author: Hardstyles
-description: BlitzSG Plugin
+main: net.blitzsg.blitz.BlitzSG
+author: Hardstyles & Topu
 commands:
   unban:
     description: lol
