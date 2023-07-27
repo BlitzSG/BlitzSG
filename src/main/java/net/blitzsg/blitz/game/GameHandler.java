@@ -291,9 +291,9 @@ public class GameHandler implements Listener {
 
                     iPlayer.setLastDamage(System.currentTimeMillis());
                     iPlayer.setLastDamager(attacker);
-                    if (iPlayer.isBlood()) {
-                        event.getEntity().getWorld().playEffect(event.getEntity().getLocation(), Effect.STEP_SOUND, Material.REDSTONE);
-                    }
+//                    if (iPlayer.isBlood()) {
+//                        event.getEntity().getWorld().playEffect(event.getEntity().getLocation(), Effect.STEP_SOUND, Material.REDSTONE);
+//                    }
                 }
             }
             if ((e.getCause() == EntityDamageEvent.DamageCause.LAVA || e.getCause() == EntityDamageEvent.DamageCause.VOID) && iPlayer.getGame().hasDeathMatchStarted()) {

@@ -28,6 +28,10 @@ public class Rank {
         return this.position >= 1;
     }
 
+    public boolean isYT(){
+        return this.position >= 5;
+    }
+
     public boolean isManager(){
         return this.position >= 8;
     }

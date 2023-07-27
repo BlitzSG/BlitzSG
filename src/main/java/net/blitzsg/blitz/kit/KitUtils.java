@@ -148,7 +148,7 @@ public class KitUtils {
 				.replaceAll("pickaxe", "Pickaxe")
 				.replaceAll("axe", "Axe")
 				.replaceAll("flesh", "Flesh")
-				.replaceAll("Tnt", "TNT");
+				.replaceAll("Tnt", "TNT").replaceAll("Fire_resistance", "Fire Resistance").replaceAll("Damage_resistance", "Resistance");
 	}
 
 	public static String getEnchantString(ItemStack itemStack) {
@@ -164,6 +164,8 @@ public class KitUtils {
 			if (enchantment == Enchantment.ARROW_KNOCKBACK) {
 				enchantName = "Punch";
 			} else if (enchantment == Enchantment.PROTECTION_ENVIRONMENTAL) {
+				enchantName = "Power";
+			} else if (enchantment == Enchantment.ARROW_DAMAGE) {
 				enchantName = "Protection";
 			} else if (enchantment == Enchantment.PROTECTION_PROJECTILE) {
 				enchantName = "Projectile Protection";
