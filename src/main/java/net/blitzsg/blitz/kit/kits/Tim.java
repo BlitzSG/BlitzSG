@@ -78,7 +78,7 @@ public class Tim extends Kit {
     public Tim() {
 
         super(
-                "Tim", "The enchanter.", new ItemBuilder(Material.EXP_BOTTLE).amount(1).make()
+                "Tim", "The Enchanter.", new ItemBuilder(Material.EXP_BOTTLE).amount(1).make()
                 , Arrays.asList(192000, 100, 1000, 2000, 4000, 16000, 50000, 100000, 250000, 1000000)
                 , Arrays.asList(Arrays.asList("§7Start the game with 3x TNT.")
                         , Arrays.asList("§7Start the game with some bullshit.")

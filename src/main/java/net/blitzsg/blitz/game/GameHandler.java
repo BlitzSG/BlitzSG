@@ -465,10 +465,10 @@ public class GameHandler implements Listener {
     public void onBlockInteract(PlayerInteractEvent e) {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(e.getPlayer().getUniqueId());
         if (!iPlayer.isInGame()) return;
-        if (e.getAction() == Action.LEFT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_AIR) {
-            if (e.getPlayer().getItemInHand() != null && e.getPlayer().getItemInHand().getType() == Material.COMPASS && e.getPlayer().isSneaking()) {
+        if (e.getPlayer().getItemInHand() != null && (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) && e.getItem().getType() == Material.COMPASS && e.getPlayer().isSneaking()) {
                 BlitzSG.getInstance().getGameManager().taunt(e.getPlayer());
-            }
+                e.setCancelled(true);
+                return;
         }
         if (!(iPlayer.getGame().getGameMode() == Game.GameMode.INGAME)) return;
         if (e.getClickedBlock() != null) {

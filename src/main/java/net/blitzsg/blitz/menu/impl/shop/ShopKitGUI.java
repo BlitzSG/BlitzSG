@@ -13,6 +13,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 public class ShopKitGUI {
@@ -27,6 +28,7 @@ public class ShopKitGUI {
                 continue;
             }
             ItemStack icon = new ItemBuilder(kit.getIcon()).name(KitUtils.getName(iPlayer, kit)).lores(KitUtils.getFullDescription(iPlayer, kit)).make();
+            icon.getItemMeta().addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
             MenuItem item = new MenuItem(icon, e -> {
                 if (iPlayer.isInGame()) {
                     return;

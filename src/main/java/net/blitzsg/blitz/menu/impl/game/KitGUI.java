@@ -8,11 +8,13 @@ import net.blitzsg.blitz.kit.Kit;
 import net.blitzsg.blitz.util.ChatUtil;
 import net.blitzsg.blitz.util.ItemBuilder;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
 public class KitGUI {
+
     public static void openGUI(Player p) {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(p.getUniqueId());
         MenuContainer gui = new MenuContainer("§8Kit Selector", 3);
@@ -27,6 +29,7 @@ public class KitGUI {
                 ArrayList<String> lore = new ArrayList<>();
                 lore.add(ChatUtil.color("&7" + kit.getDescription()));
                 ItemStack icon = new ItemBuilder(kit.getIcon()).name("&6" + kit.getName()).lores(lore).make();
+                icon.getItemMeta().addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
                 MenuItem item = new MenuItem(icon, e -> {
                     if (!iPlayer.isInGame()) {
                         return;
@@ -35,11 +38,14 @@ public class KitGUI {
                     if (iPlayer.getKitLevel(kit) == 0 && !iPlayer.getGame().isGodGame()) {
                         if (!(kit.getPrice(0) == 0) && !((kit.getPrice(0) == 125000) && iPlayer.getRank().getMultiplier() >= 2) && !((kit.getPrice(0) == 250000) && iPlayer.getRank().getMultiplier() >= 3)) {
                             p.sendMessage(ChatUtil.color(BlitzSG.CORE_NAME + "&cYou don't have this kit!"));
+                            p.closeInventory();
                             return;
                         }
                     }
                     p.sendMessage(ChatUtil.color(BlitzSG.CORE_NAME + "&eYou have chosen the &a" + kit.getName() + " &ekit, You will get your items 60 seconds after the game starts."));
                     iPlayer.setSelectedKit(kit);
+                    p.closeInventory();
+
                 });
                 gui.setItem(row * 9 + col, item);
                 index++;
