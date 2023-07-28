@@ -8,6 +8,7 @@ import net.blitzsg.blitz.BlitzSG;
 import net.blitzsg.blitz.game.Game;
 import net.blitzsg.blitz.util.ItemUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -112,7 +113,7 @@ public class IPlayerManager {
 
     public void resetPlayerStatus(Player p) {
 
-        p.setGameMode(org.bukkit.GameMode.SURVIVAL);
+        p.setGameMode(GameMode.SURVIVAL);
         p.setMaxHealth(21);
         p.setHealth(p.getMaxHealth());
         p.setMaxHealth(20);

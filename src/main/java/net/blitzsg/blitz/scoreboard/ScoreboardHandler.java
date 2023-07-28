@@ -104,9 +104,9 @@ public class ScoreboardHandler implements Listener {
 
         // Animated title: Rotate through colors for the first few characters
         List<String> animatedTitle = Arrays.asList(
-                "&e&lBLITZ SG", "&6&lB&e&lLITZ SG", "&f&lB&6&lL&e&lITZ SG", "&e&lB&f&lL&6&lI&e&lTZ SG", "&e&lBL&e&lI&6&lT&e&lZ SG",
-                "&e&lBLI&f&lT&6&lZ&e&l S&f&lG", "&e&lBLIT&f&lZ&6&l S&f&lG", "&e&lBLITZ&f&l S&e&lG", "&e&lBLITZ &f&lS&6&lG", "&e&lBLITZ S&f&lG",
-                "&e&lBLITZ SG", "&e&lBLITZ SG","&e&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG", "&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG"
+                "&e&lBLITZ SG", "&6&lB&e&lLITZ SG", "&f&lB&6&lL&e&lITZ SG", "&f&lBL&6&lI&e&lTZ SG", "&f&lBLI&6&lT&e&lZ SG",
+                "&f&lBLIT&6&lZ&e&l SG", "&f&lBLITZ&6&l S&e&lG", "&f&lBLITZ S&6&lG", "&f&lBLITZ SG",
+                "&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG", "&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&f&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG","&e&lBLITZ SG"
         );
 
         int animationDelay = 2; // Change this to adjust the animation speed
