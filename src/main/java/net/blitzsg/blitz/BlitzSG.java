@@ -12,6 +12,7 @@ import net.blitzsg.blitz.command.party.PartyChatCommand;
 import net.blitzsg.blitz.command.party.PartyCommand;
 import net.blitzsg.blitz.command.taunt.TauntCommand;
 import net.blitzsg.blitz.command.vote.VoteCommand;
+import net.blitzsg.blitz.nickname.NicknameCommand;
 import net.blitzsg.blitz.party.PartyManager;
 import net.blitzsg.blitz.player.IPlayerHandler;
 import net.blitzsg.blitz.player.IPlayerManager;
@@ -116,7 +117,7 @@ public class BlitzSG extends JavaPlugin {
         //Register Commands::
         registerCommands();
 
-//        getCommand("nick").setExecutor(new NicknameCommand());
+        getCommand("nick").setExecutor(new NicknameCommand());
 
         //Register Handlers:
         getServer().getPluginManager().registerEvents(this.gameHandler = new GameHandler(), this);
