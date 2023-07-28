@@ -98,7 +98,7 @@ public class Baker extends Kit {
     public Baker() {
 
         super(
-                "Baker", "Mmm, food!", new ItemStack(Material.CAKE, 1)
+                "Baker", "Mmm, food!", new ItemStack(Material.BREAD, 1)
                 , Arrays.asList(0, 100, 1000, 2000, 4000, 16000, 50000, 100000, 250000, 1000000)
                 , Arrays.asList(Arrays.asList("§7Start the gameith 3x TNT.")
                         , Arrays.asList("§7Start the game with some bullshit.")

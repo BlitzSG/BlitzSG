@@ -94,7 +94,7 @@ public class MeatMaster extends Kit {
     public MeatMaster() {
 
         super(
-                "MeatMaster", "Harvest those mobs!", new ItemBuilder(Material.WOOD_SWORD).make()
+                "MeatMaster", "Harvest those mobs!", new ItemBuilder(Material.PORK).make()
                 , Arrays.asList(0, 100, 1000, 2000, 4000, 16000, 50000, 100000, 250000, 1000000)
                 , Arrays.asList(Arrays.asList("§7Start the game with 3x TNT.")
                         , Arrays.asList("§7Start the game with some bullshit.")

@@ -17,11 +17,11 @@ public class KitManager {
 
     private void loadKits() {
         addKit(new Armorer());
-        addKit(new Knight());
+        addKit(new MeatMaster());
         addKit(new Fisherman());
         addKit(new Speleologist());
         addKit(new Archer());
-        addKit(new MeatMaster());
+        addKit(new Knight());
         addKit(new Scout());
         addKit(new Baker());
 

@@ -23,7 +23,7 @@ public class ShopStarGUI {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(p.getUniqueId());
 
         // Create GUI
-        MenuContainer gui = new MenuContainer("§8Blitz Star Shop", 5);
+        MenuContainer gui = new MenuContainer("§8Blitz Star Shop", 6);
 
         // Add Items
         int firstItem = 10;
@@ -63,7 +63,11 @@ public class ShopStarGUI {
         }
 
         MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
-        gui.setItem(gui.getBottomLeft(), back);
+        gui.setItem(48, back);
+
+        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + iPlayer.getCoins()).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
+        gui.setItem(49, emerald);
+
         gui.show(p);
     }
 

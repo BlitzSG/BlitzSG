@@ -6,6 +6,7 @@ import net.blitzsg.blitz.menu.MenuItem;
 import net.blitzsg.blitz.player.IPlayer;
 import net.blitzsg.blitz.kit.Kit;
 import net.blitzsg.blitz.kit.KitUtils;
+import net.blitzsg.blitz.rank.Rank;
 import net.blitzsg.blitz.util.ChatUtil;
 import net.blitzsg.blitz.util.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -15,25 +16,30 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class ShopKitGUI {
 
     public static void openGUI(Player p, boolean isBasic) {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(p.getUniqueId());
 
-        MenuContainer gui = new MenuContainer(ChatColor.DARK_GRAY + "Basic Kit Upgrades", 4);
-        int firstItem = 10;
+        MenuContainer gui = new MenuContainer(ChatColor.DARK_GRAY + (isBasic ? "Basic Kit Upgrades" : "Advanced Kit Upgrades"), 6);
+        int firstItem = 11;
         for (Kit kit : BlitzSG.getInstance().getKitManager().getKits()) {
             if ((isBasic && kit.getPrice(0) != 0) || (!isBasic && kit.getPrice(0) == 0)) {
                 continue;
             }
             ItemStack icon = new ItemBuilder(kit.getIcon()).name(KitUtils.getName(iPlayer, kit)).lores(KitUtils.getFullDescription(iPlayer, kit)).make();
-            icon.getItemMeta().addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            addAllItemFlags(icon);
             MenuItem item = new MenuItem(icon, e -> {
                 if (iPlayer.isInGame()) {
                     return;
                 }
-                if (iPlayer.getKitLevel(kit) == 0 && e.getInventory().getName() == "§8Basic Kit Upgrades") {
+                if (iPlayer.getKitLevel(kit) == 0 && e.getInventory().getName() == "§8Basic Kit Upgrades" || iPlayer.getKitLevel(kit) == 0 && e.getInventory().getName() == "§8Advanced Kit Upgrades") {
                     if (iPlayer.getCoins() < kit.getPrice(iPlayer.getKitLevel(kit) + 1)) {
                         p.sendMessage("§cYou don't have enough coins to purchase this upgrade!");
                         return;
@@ -84,9 +90,24 @@ public class ShopKitGUI {
         }
 
         MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
-        gui.setItem(gui.getBottomLeft(), back);
+        gui.setItem(48, back);
+
+        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + iPlayer.getCoins()).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
+        gui.setItem(49, emerald);
 
         gui.show(p);
     }
 
+    public static ItemStack addAllItemFlags(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        item.setItemMeta(meta);
+
+        return new ItemStack(item);
+    }
 }

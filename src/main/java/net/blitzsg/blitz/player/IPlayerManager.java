@@ -63,7 +63,7 @@ public class IPlayerManager {
         p.getInventory().setItem(7, ItemUtils.buildItem(new ItemStack(Material.PAINTING), "&aYour Stats &7(Right Click)", Arrays.asList("§7Right-Click to view your stats")));
         p.getInventory().setItem(8, ItemUtils.buildItem(new ItemStack(Material.NETHER_STAR), "&aLobby Selector &7(Right Click)", Arrays.asList("§7Right-Click to open the Lobby Selector.")));
         p.getInventory().setItem(1, ItemUtils.buildItem(new ItemStack(Material.WATCH), "&aPlayer Visibility &7(Right Click)", Arrays.asList("§7Right-Click to hide or show players")));
-        p.getInventory().setItem(0, ItemUtils.buildItem(new ItemStack(Material.COMPASS), "&aGame Selector &7(Right Click)", Arrays.asList("§7Right-Click to open the Game Selector")));
+        p.getInventory().setItem(0, ItemUtils.buildItem(new ItemStack(Material.COMPASS), "&aGame Menu &7(Right Click)", Arrays.asList("§7Right-Click to open the Game Selector")));
 
         resetPlayerStatus(p);
         IPlayer iPlayer = this.getPlayer(p.getUniqueId());

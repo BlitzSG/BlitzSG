@@ -96,7 +96,7 @@ public class HorseTamer extends Kit {
     public HorseTamer() {
 
         super(
-                "HorseTamer", "It's a real horse I ride", new ItemStack(Material.SADDLE, 1)
+                "HorseTamer", "It's a real horse I ride", new ItemBuilder(Material.MONSTER_EGG).durability(100).make()
                 , Arrays.asList(192000, 100, 1000, 2000, 4000, 16000, 50000, 100000, 250000, 1000000)
                 , Arrays.asList(Arrays.asList("§7Start the game with 3x TNT.")
                         , Arrays.asList("§7Start the game with some bullshit.")

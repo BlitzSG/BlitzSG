@@ -316,6 +316,7 @@ public class Game {
                         message(BlitzSG.CORE_NAME + "&eYou will be able to move in &e" + countdownTime + " &eseconds!");
                     else if (countdownTime <= 30) {
                         message(BlitzSG.CORE_NAME + "&eYou will be able to move in " + countdownTime + "! Choose a kit by right clicking the bow!");
+                        message(BlitzSG.CORE_NAME + "&eVIPs do /fw to launch a firework!");
                     }
                 }
             }
