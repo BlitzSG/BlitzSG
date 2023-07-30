@@ -1,6 +1,7 @@
 package net.blitzsg.blitz.menu.impl.game;
 
 import net.blitzsg.blitz.BlitzSG;
+import net.blitzsg.blitz.kit.KitUtils;
 import net.blitzsg.blitz.menu.MenuContainer;
 import net.blitzsg.blitz.menu.MenuItem;
 import net.blitzsg.blitz.player.IPlayer;
@@ -30,7 +31,8 @@ public class KitGUI {
                 Kit kit = kits.get(index);
                 ArrayList<String> lore = new ArrayList<>();
                 lore.add(ChatUtil.color("&7" + kit.getDescription()));
-                ItemStack icon = new ItemBuilder(kit.getIcon()).name("&6" + kit.getName()).lores(lore).make();
+//                ItemStack icon = new ItemBuilder(kit.getIcon()).name((iPlayer.getKitLevel(kit) == 0 && !iPlayer.getGame().isGodGame() ? "&c" : "&a") + kit.getName() + KitUtils.getKitTag(iPlayer.getKitLevel(kit))).lores(lore).make();
+                ItemStack icon = new ItemBuilder(kit.getIcon()).name((iPlayer.getKitLevel(kit) == 0 && !iPlayer.getGame().isGodGame() ? "&c" : "&a") + kit.getName()).lores(lore).make();
                 addAllItemFlags(icon);
                 MenuItem item = new MenuItem(icon, e -> {
                     if (!iPlayer.isInGame()) {

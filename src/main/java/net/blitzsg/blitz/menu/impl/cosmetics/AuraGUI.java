@@ -36,7 +36,7 @@ public class AuraGUI {
         //Add Items
 
         MenuContainer gui = new MenuContainer(ChatUtil.color("&8Auras"), 6);
-        int index = 11;
+        int index = 10;
 
         Set<Aura> auras = BlitzSG.getInstance().getCosmeticsManager().getAuras();
         for (Aura aura : auras) {
@@ -51,11 +51,11 @@ public class AuraGUI {
                 iPlayer.setAura(aura);
                 p.closeInventory();
             });
-            if (index == 16 || index == 25 || index == 34) {
-                index = index + 4;
-            }
-
             gui.setItem(index, item);
+            if ((index + 2) % 9 == 0) {
+                index += 3;
+                continue;
+            }
             index++;
         }
         MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
