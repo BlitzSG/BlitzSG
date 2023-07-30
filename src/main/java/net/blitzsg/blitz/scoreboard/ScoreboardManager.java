@@ -30,15 +30,15 @@ public class ScoreboardManager extends BukkitRunnable {
             Date now = new Date();
             if (!iPlayer.isInGame()) {
                 board.add(separator);
-                board.add("Kills: &a" + f(iPlayer.getKills()));
-                board.add("Wins: &a" + f(iPlayer.getWins()));
-                board.add("Blitz Score: &c" + f(iPlayer.getElo()));
+                board.add("Kills: &a" + format(iPlayer.getKills()));
+                board.add("Wins: &a" + format(iPlayer.getWins()));
+                board.add("Blitz Score: &c" + format(iPlayer.getElo()));
                 board.add("Blitz Rank: &cN/A");
 
 
                 board.add(separator);
 
-                board.add("Coins: &a" + f(iPlayer.getCoins()));
+                board.add("Coins: &a" + format(iPlayer.getCoins()));
                 board.add("Unlocks: &cN/A");
 
                 board.add(separator);
@@ -142,7 +142,7 @@ public class ScoreboardManager extends BukkitRunnable {
         return "" + nextEvent;
     }
 
-    private String f(int i) {
+    private String format(int i) {
         return NumberFormat.getNumberInstance(Locale.US).format(i);
     }
 

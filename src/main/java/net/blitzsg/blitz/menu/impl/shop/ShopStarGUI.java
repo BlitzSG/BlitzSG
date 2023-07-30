@@ -26,7 +26,7 @@ public class ShopStarGUI {
         MenuContainer gui = new MenuContainer("§8Blitz Star Shop", 6);
 
         // Add Items
-        int firstItem = 10;
+        int firstItem = 11;
         for (Star star : BlitzSG.getInstance().getStarManager().getStars()) {
             ItemStack itemStack = new ItemBuilder(star.getIcon()).name(ChatUtil.color("&a" + star.getName())).lores(getFullDescription(iPlayer, star)).make();
             MenuItem menuItem = new MenuItem(itemStack, e -> {
@@ -54,18 +54,18 @@ public class ShopStarGUI {
                 iPlayer.addStar(star);
                 p.closeInventory();
             });
-            gui.setItem(firstItem, menuItem);
-            if ((firstItem + 2) % 9 == 0) {
-                firstItem += 3;
-                continue;
+            if (firstItem == 16 || firstItem == 25 || firstItem == 34) {
+                firstItem = firstItem + 4;
             }
+
+            gui.setItem(firstItem, menuItem);
             firstItem++;
         }
 
         MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
         gui.setItem(48, back);
 
-        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + iPlayer.getCoins()).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
+        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + format(iPlayer.getCoins())).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
         gui.setItem(49, emerald);
 
         gui.show(p);
@@ -99,5 +99,8 @@ public class ShopStarGUI {
         return descriptionList;
     }
 
+    private static String format(int i) {
+        return NumberFormat.getNumberInstance(Locale.US).format(i);
+    }
 
 }

@@ -15,15 +15,17 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class TauntGUI {
 
 
     public static void openGUI(Player p) {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(p.getUniqueId());
-        MenuContainer gui = new MenuContainer(ChatUtil.color("&8Taunts"), 4);
-        int firstItem = 10;
+        MenuContainer gui = new MenuContainer(ChatUtil.color("&8Taunts"), 6);
+        int firstItem = 11;
 
         for (Taunt aura : BlitzSG.getInstance().getCosmeticsManager().getTaunts()) {
             ItemStack icon = new ItemBuilder(aura.getIcon()).name(ChatColor.GOLD + aura.getName()).lores(getFullDescription(iPlayer, aura)).make();
@@ -53,16 +55,19 @@ public class TauntGUI {
                 iPlayer.setTaunt(aura);
                 p.closeInventory();
             });
-            gui.setItem(firstItem, menuItem);
-            if ((firstItem + 2) % 9 == 0) {
-                firstItem += 3;
-                continue;
+            if (firstItem == 16 || firstItem == 25 || firstItem == 34) {
+                firstItem = firstItem + 4;
             }
+            gui.setItem(firstItem, menuItem);
             firstItem++;
         }
 
         MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
-        gui.setItem(gui.getBottomLeft(), back);
+        gui.setItem(48, back);
+
+        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + format(iPlayer.getCoins())).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
+        gui.setItem(49, emerald);
+
         gui.show(p);
     }
 
@@ -75,7 +80,7 @@ public class TauntGUI {
             desc.add("§aSELECTED!");
             return desc;
         } else if (iPlayer.getTaunt() == null && iPlayer.getRank().getPosition() == 0) {
-            desc.add("§7Price: §62,000");
+            desc.add("§7Price: §1,000");
             return desc;
         }
         if (p.getRequiredRank().getPosition() == 0)
@@ -86,5 +91,8 @@ public class TauntGUI {
         return desc;
     }
 
+    private static String format(int i) {
+        return NumberFormat.getNumberInstance(Locale.US).format(i);
+    }
 
 }

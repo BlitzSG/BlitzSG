@@ -27,7 +27,7 @@ public class ShopKitGUI {
     public static void openGUI(Player p, boolean isBasic) {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(p.getUniqueId());
 
-        MenuContainer gui = new MenuContainer(ChatColor.DARK_GRAY + (isBasic ? "Basic Kit Upgrades" : "Advanced Kit Upgrades"), 6);
+        MenuContainer gui = new MenuContainer(ChatColor.DARK_GRAY + (isBasic ? "Kit Upgrades" : "Advanced Kit Upgrades"), 6);
         int firstItem = 11;
         for (Kit kit : BlitzSG.getInstance().getKitManager().getKits()) {
             if ((isBasic && kit.getPrice(0) != 0) || (!isBasic && kit.getPrice(0) == 0)) {
@@ -39,7 +39,7 @@ public class ShopKitGUI {
                 if (iPlayer.isInGame()) {
                     return;
                 }
-                if (iPlayer.getKitLevel(kit) == 0 && e.getInventory().getName() == "§8Basic Kit Upgrades" || iPlayer.getKitLevel(kit) == 0 && e.getInventory().getName() == "§8Advanced Kit Upgrades") {
+                if (iPlayer.getKitLevel(kit) == 0 && e.getInventory().getName() == "§8Kit Upgrades" || iPlayer.getKitLevel(kit) == 0 && e.getInventory().getName() == "§8Advanced Kit Upgrades") {
                     if (iPlayer.getCoins() < kit.getPrice(iPlayer.getKitLevel(kit) + 1)) {
                         p.sendMessage("§cYou don't have enough coins to purchase this upgrade!");
                         return;
@@ -81,18 +81,17 @@ public class ShopKitGUI {
                 }
                 p.closeInventory();
             });
-            gui.setItem(firstItem, item);
-            if ((firstItem + 2) % 9 == 0) {
-                firstItem += 3;
-                continue;
+            if (firstItem == 16 || firstItem == 25 || firstItem == 34) {
+                firstItem = firstItem + 4;
             }
+            gui.setItem(firstItem, item);
             firstItem++;
         }
 
         MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
         gui.setItem(48, back);
 
-        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + iPlayer.getCoins()).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
+        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + format(iPlayer.getCoins())).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
         gui.setItem(49, emerald);
 
         gui.show(p);
@@ -110,4 +109,9 @@ public class ShopKitGUI {
 
         return new ItemStack(item);
     }
+
+    private static String format(int i) {
+        return NumberFormat.getNumberInstance(Locale.US).format(i);
+    }
+
 }

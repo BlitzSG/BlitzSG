@@ -14,7 +14,9 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Set;
 
 public class AuraGUI {
@@ -33,8 +35,8 @@ public class AuraGUI {
 
         //Add Items
 
-        MenuContainer gui = new MenuContainer(ChatUtil.color("&8Auras"), 5);
-        int index = 10;
+        MenuContainer gui = new MenuContainer(ChatUtil.color("&8Auras"), 6);
+        int index = 11;
 
         Set<Aura> auras = BlitzSG.getInstance().getCosmeticsManager().getAuras();
         for (Aura aura : auras) {
@@ -49,15 +51,18 @@ public class AuraGUI {
                 iPlayer.setAura(aura);
                 p.closeInventory();
             });
-            gui.setItem(index, item);
-            if ((index + 2) % 9 == 0) {
-                index += 3;
-                continue;
+            if (index == 16 || index == 25 || index == 34) {
+                index = index + 4;
             }
+
+            gui.setItem(index, item);
             index++;
         }
         MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
-        gui.setItem(gui.getBottomLeft(), back);
+        gui.setItem(48, back);
+
+        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + format(iPlayer.getCoins())).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
+        gui.setItem(49, emerald);
 
         gui.show(p);
     }
@@ -76,5 +81,8 @@ public class AuraGUI {
         return desc;
     }
 
+    private static String format(int i) {
+        return NumberFormat.getNumberInstance(Locale.US).format(i);
+    }
 
 }

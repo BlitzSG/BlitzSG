@@ -13,6 +13,8 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
+import static net.blitzsg.blitz.menu.impl.shop.ShopKitGUI.addAllItemFlags;
+
 public class KitGUI {
 
     public static void openGUI(Player p) {
@@ -29,7 +31,7 @@ public class KitGUI {
                 ArrayList<String> lore = new ArrayList<>();
                 lore.add(ChatUtil.color("&7" + kit.getDescription()));
                 ItemStack icon = new ItemBuilder(kit.getIcon()).name("&6" + kit.getName()).lores(lore).make();
-                icon.getItemMeta().addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                addAllItemFlags(icon);
                 MenuItem item = new MenuItem(icon, e -> {
                     if (!iPlayer.isInGame()) {
                         return;
