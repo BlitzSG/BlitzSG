@@ -5,7 +5,7 @@ import net.blitzsg.blitz.BlitzSG;
 import net.blitzsg.blitz.cosmetic.Taunt;
 import net.blitzsg.blitz.menu.MenuContainer;
 import net.blitzsg.blitz.menu.MenuItem;
-import net.blitzsg.blitz.menu.impl.shop.ShopGUI;
+import net.blitzsg.blitz.menu.impl.shop.ShopMenu;
 import net.blitzsg.blitz.player.IPlayer;
 import net.blitzsg.blitz.util.ChatUtil;
 import net.blitzsg.blitz.util.ItemBuilder;
@@ -19,7 +19,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class TauntGUI {
+public class SelectTauntMenu {
 
 
     public static void openGUI(Player p) {
@@ -62,10 +62,10 @@ public class TauntGUI {
             firstItem++;
         }
 
-        MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
+        MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopMenu.openGUI(p));
         gui.setItem(48, back);
 
-        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + format(iPlayer.getCoins())).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
+        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + format(iPlayer.getCoins())).lore("&6http://store.blitzsg.net").make(), e -> ShopMenu.openGUI(p));
         gui.setItem(49, emerald);
 
         gui.show(p);

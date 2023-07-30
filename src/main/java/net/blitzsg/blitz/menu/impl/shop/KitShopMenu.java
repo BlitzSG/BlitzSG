@@ -6,7 +6,6 @@ import net.blitzsg.blitz.menu.MenuItem;
 import net.blitzsg.blitz.player.IPlayer;
 import net.blitzsg.blitz.kit.Kit;
 import net.blitzsg.blitz.kit.KitUtils;
-import net.blitzsg.blitz.rank.Rank;
 import net.blitzsg.blitz.util.ChatUtil;
 import net.blitzsg.blitz.util.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -19,10 +18,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Locale;
 
-public class ShopKitGUI {
+public class KitShopMenu {
 
     public static void openGUI(Player p, boolean isBasic) {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(p.getUniqueId());
@@ -88,10 +86,10 @@ public class ShopKitGUI {
             firstItem++;
         }
 
-        MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
+        MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopMenu.openGUI(p));
         gui.setItem(48, back);
 
-        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + format(iPlayer.getCoins())).lore("&6http://store.blitzsg.net").make(), e -> ShopGUI.openGUI(p));
+        MenuItem emerald = new MenuItem(new ItemBuilder(new ItemStack(Material.EMERALD)).name("&7Total Coins: &6" + format(iPlayer.getCoins())).lore("&6http://store.blitzsg.net").make(), e -> ShopMenu.openGUI(p));
         gui.setItem(49, emerald);
 
         gui.show(p);

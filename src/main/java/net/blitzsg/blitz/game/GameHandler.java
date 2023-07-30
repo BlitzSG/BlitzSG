@@ -1,11 +1,11 @@
 package net.blitzsg.blitz.game;
 
 import net.blitzsg.blitz.BlitzSG;
-import net.blitzsg.blitz.menu.impl.game.SpectatorGUI;
+import net.blitzsg.blitz.menu.impl.game.SpectateMenu;
 import net.blitzsg.blitz.player.IPlayer;
 import net.blitzsg.blitz.command.fireworks.FireworkCommand;
-import net.blitzsg.blitz.menu.impl.game.KitGUI;
-import net.blitzsg.blitz.menu.impl.game.StarGUI;
+import net.blitzsg.blitz.menu.impl.game.SelectKitMenu;
+import net.blitzsg.blitz.menu.impl.game.StarMenu;
 import net.blitzsg.blitz.util.ChatUtil;
 import net.blitzsg.blitz.util.loot.ChestUtils;
 import net.blitzsg.blitz.util.ItemBuilder;
@@ -434,7 +434,7 @@ public class GameHandler implements Listener {
         if (e.getAction() != Action.RIGHT_CLICK_AIR && e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (e.getItem() == null) return;
         if (e.getItem().getType() == Material.BOW) {
-            KitGUI.openGUI(p);
+            SelectKitMenu.openGUI(p);
         }
     }
 
@@ -452,10 +452,10 @@ public class GameHandler implements Listener {
                 e.setCancelled(true);
                 return;
             }
-            StarGUI.openGUI(p);
+            StarMenu.openGUI(p);
         } else if (e.getItem().getType() == Material.COMPASS) {
             if (iPlayer.isSpectating()) {
-                SpectatorGUI.openGUI(p);
+                SpectateMenu.openGUI(p);
             }
         }
     }

@@ -1,7 +1,6 @@
 package net.blitzsg.blitz.menu.impl.game;
 
 import net.blitzsg.blitz.BlitzSG;
-import net.blitzsg.blitz.kit.KitUtils;
 import net.blitzsg.blitz.menu.MenuContainer;
 import net.blitzsg.blitz.menu.MenuItem;
 import net.blitzsg.blitz.player.IPlayer;
@@ -9,14 +8,13 @@ import net.blitzsg.blitz.kit.Kit;
 import net.blitzsg.blitz.util.ChatUtil;
 import net.blitzsg.blitz.util.ItemBuilder;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-import static net.blitzsg.blitz.menu.impl.shop.ShopKitGUI.addAllItemFlags;
+import static net.blitzsg.blitz.menu.impl.shop.KitShopMenu.addAllItemFlags;
 
-public class KitGUI {
+public class SelectKitMenu {
 
     public static void openGUI(Player p) {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(p.getUniqueId());

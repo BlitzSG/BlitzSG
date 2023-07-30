@@ -1,7 +1,7 @@
 package net.blitzsg.blitz.menu.impl.game;
 
 import net.blitzsg.blitz.BlitzSG;
-import net.blitzsg.blitz.menu.impl.shop.ShopGUI;
+import net.blitzsg.blitz.menu.impl.shop.ShopMenu;
 import net.blitzsg.blitz.player.IPlayer;
 import net.blitzsg.blitz.gamestar.Star;
 import net.blitzsg.blitz.util.ItemBuilder;
@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class StarGUI {
+public class StarMenu {
 
     public static void openGUI(Player p) {
         MenuContainer gui = new MenuContainer("§8Star Selector", 2);
@@ -53,7 +53,7 @@ public class StarGUI {
             gui.setItem(index, 0, menuItem);
             index++;
         }
-        MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopGUI.openGUI(p));
+        MenuItem back = new MenuItem(new ItemBuilder(new ItemStack(Material.ARROW)).name("&aBack").make(), e -> ShopMenu.openGUI(p));
         gui.setItem(gui.getBottomLeft(), back);
         gui.show(p);
 

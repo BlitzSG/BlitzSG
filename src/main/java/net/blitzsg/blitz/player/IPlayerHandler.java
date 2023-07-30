@@ -1,6 +1,6 @@
 package net.blitzsg.blitz.player;
 
-import net.blitzsg.blitz.menu.impl.shop.ShopGUI;
+import net.blitzsg.blitz.menu.impl.shop.ShopMenu;
 import net.blitzsg.blitz.party.Party;
 import net.blitzsg.blitz.util.BookUtility;
 import net.blitzsg.blitz.util.ChatUtil;
@@ -142,7 +142,7 @@ public class IPlayerHandler implements Listener {
         if (e.getItem() == null) return;
         if (p.getGameMode() == GameMode.CREATIVE) return;
         e.setCancelled(true);
-        if (e.getItem().getType() == Material.EMERALD) ShopGUI.openGUI(p);
+        if (e.getItem().getType() == Material.EMERALD) ShopMenu.openGUI(p);
         if(e.getItem().getType() == Material.PAINTING) {
             BookUtility bookUtility = new BookUtility();
             bookUtility.title("" + iPlayer.getRank(true).getPrefix() + p.getName() + "'s Profile");

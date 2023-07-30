@@ -15,7 +15,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 
-public class SpectatorGUI {
+public class SpectateMenu {
 
     public static void openGUI(Player p) {
         IPlayer iPlayer = BlitzSG.getInstance().getIPlayerManager().getPlayer(p.getUniqueId());
